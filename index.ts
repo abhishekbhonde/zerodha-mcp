@@ -3,9 +3,11 @@ import { KiteConnect } from "kiteconnect";
 const apiKey = process.env.API_KEY
 const apiSecret = process.env.API_SECRET
 console.log(apiKey, apiSecret);
-const requestToken = "your_request_token";
+const requestToken = process.env.REQUEST_TOKEN;
 
 const kc = new KiteConnect({ api_key: apiKey });
+
+console.log(kc.getLoginURL());
 
 async function init() {
   try {
@@ -28,7 +30,14 @@ async function generateSession() {
 
 async function getProfile() {
   try {
-    const profile = await kc.getProfile();
+    const profile = await kc.placeOrder("regular",{
+        exchange: "NSE",
+        tradingsymbol: "HDFCBANK",
+        transaction_type: "BUY",
+        quantity: 1,
+        product: "CNC",
+        order_type: "MARKET"
+    });
     console.log("Profile:", profile);
   } catch (err) {
     console.error("Error getting profile:", err);
