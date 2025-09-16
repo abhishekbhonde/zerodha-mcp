@@ -1,0 +1,16 @@
+{
+  "name": "mcp-zerodha",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "kiteconnect": "^5.1.0"
+  }
+}
